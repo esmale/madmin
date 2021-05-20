@@ -7,8 +7,11 @@
 Why another Ruby on Rails admin? We wanted an admin that was:
 
 * Familiar and customizable like Rails scaffolds (less DSL)
-* Supports all the Rails features out of the box (ActionText, ActionMailbox, etc)
+* Supports all the Rails features out of the box (ActionText, ActionMailbox, has_secure_password, etc)
 * Stimulus / Turbolinks / Hotwire ready
+
+![Madmin Screenshot](docs/images/screenshot.png)
+_We're still working on the design!_
 
 ## Installation
 Add `madmin` to your application's Gemfile:
@@ -49,15 +52,16 @@ rails generate madmin:views
 ```
 
 The view files that are copied over in this case includes all of the standard Rails action views (index, new, edit, show, and _form), as well as:
-* application.html.erb (layout file)
-* _javascript.html.erb (default JavaScript setup)
-* _navigation.html.erb (renders the navigation/sidebar menu)
+* `application.html.erb` (layout file)
+* `_javascript.html.erb` (default JavaScript setup)
+* `_navigation.html.erb` (renders the navigation/sidebar menu)
 
 As with the other views, you can specifically run the views generator for only the navigation or application layout views:
 ```bash
 rails g madmin:views:navigation
  # -> app/views/madmin/_navigation.html.erb
- 
+
+
 rails g madmin:views:layout  # Note the layout generator includes the layout, javascript, and navigation files.
  # -> app/views/madmin/application.html.erb
  # -> app/views/madmin/_javascript.html.erb
@@ -75,6 +79,11 @@ You can also scope the copied view(s) to a specific Resource/Model:
 rails generate madmin:views:index Book
  # -> app/views/madmin/books/index.html.erb
 ```
+
+## Authentication
+
+You can use a couple of strategies to authenticate users who are trying to
+access your madmin panel: [Authentication Docs](docs/authentication.md)
 
 ## 🙏 Contributing
 
